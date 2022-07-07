@@ -11,7 +11,7 @@ public class move : MonoBehaviour
     }
     void CheckingGround()
     {
-        onGround = 
+        // onGround = 
     }
 
 }
