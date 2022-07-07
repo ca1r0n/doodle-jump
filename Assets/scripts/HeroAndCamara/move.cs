@@ -5,6 +5,7 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public GameObject platforms;
     public float jumpForce = 15;
     private Vector2 MoveVector;
     public bool onGround = false;
@@ -16,11 +17,13 @@ public class move : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Update() {
+    private void Update()
+    {
         CheckingGround();
-        if(onGround)
+        if (onGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
         }
         CharacterMove();
     }
@@ -32,6 +35,6 @@ public class move : MonoBehaviour
     private void CharacterMove()
     {
         MoveVector.x = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(MoveVector.x *moveSpead, rb.velocity.y);
+        rb.velocity = new Vector2(MoveVector.x * moveSpead, rb.velocity.y);
     }
 }
