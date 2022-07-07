@@ -7,11 +7,13 @@ public class move : MonoBehaviour
     private Rigidbody2D rb;
     private Rigidbody2D rb_Platforms;
     public GameObject platforms;
+    public Transform Point;
+    public Transform Hero;
     public float jumpForce = 15;
-    private Vector2 MoveVector;
     public bool onGround = false;
     public Transform GroundCheck;
     public LayerMask ground;
+    public LayerMask Rect;
     public float moveSpead = 40;
     private float Rad = 0.4f;
     private void Start()
@@ -24,7 +26,7 @@ public class move : MonoBehaviour
         CheckingGround();
         if (onGround)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             rb_Platforms.velocity = new Vector2(rb_Platforms.velocity.x, -jumpForce);
         }
         CharacterMove();
@@ -32,11 +34,9 @@ public class move : MonoBehaviour
     void CheckingGround()
     {
         onGround = Physics2D.OverlapCircle(GroundCheck.position, Rad, ground);
-
     }
     private void CharacterMove()
     {
-        MoveVector.x = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(MoveVector.x * moveSpead, rb.velocity.y);
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpead, rb.velocity.y);
     }
 }
