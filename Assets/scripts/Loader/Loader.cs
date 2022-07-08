@@ -30,6 +30,7 @@ public class Loader : MonoBehaviour
             statusText.text = (asyncLoad.progress * 100f) + "%";
             slider.value = asyncLoad.progress;
 
+
             if (asyncLoad.progress >= 0.9f && !asyncLoad.allowSceneActivation)
             {
                 yield return new WaitForSeconds(1);
