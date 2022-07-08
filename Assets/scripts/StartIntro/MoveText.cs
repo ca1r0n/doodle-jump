@@ -17,7 +17,7 @@ public class MoveText : MonoBehaviour
     void Start()
     {
         startPosition = new Vector2(transform.position.x - 500, transform.position.y);
-        endPosition = new Vector2(transform.position.x + 100, transform.position.y);
+        endPosition = new Vector2(transform.position.x + 145, transform.position.y);
         
         textField.transform.position = startPosition;
     }
