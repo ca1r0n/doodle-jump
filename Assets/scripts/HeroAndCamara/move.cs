@@ -5,36 +5,45 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public GameObject platforms;
-    public float jumpForce = 15;
-    private Vector2 MoveVector;
-    public bool onGround = false;
-    public Transform GroundCheck;
-    public LayerMask ground;
-    public float moveSpead = 40;
+    private Rigidbody2D rb_Platforms;
+    [SerializeField] private GameObject platforms;
+    [SerializeField] private Transform Hero;
+    [SerializeField] private float jumpForce = 15;
+    private bool onGround = false;
+    [SerializeField] private Transform GroundCheck;
+    [SerializeField] private LayerMask ground;
+    [SerializeField] private LayerMask Rect;
+    [SerializeField] private float moveSpead = 40;
     private float Rad = 0.4f;
+    public bool CheckTrigger;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb_Platforms = platforms.GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        CheckingGround();
+        CharacterMove();
         if (onGround)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
+            rb_Platforms.velocity = new Vector2(rb_Platforms.velocity.x, -jumpForce);
         }
-        CharacterMove();
+        CheckingGround();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        onGround = true;
     }
     void CheckingGround()
     {
-        onGround = Physics2D.OverlapCircle(GroundCheck.position, Rad, ground);
-
+        if (CheckTrigger)
+            onGround = false;
+        else
+            onGround = Physics2D.OverlapCircle(GroundCheck.position, Rad, ground);
     }
     private void CharacterMove()
     {
-        MoveVector.x = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(MoveVector.x * moveSpead, rb.velocity.y);
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpead, rb.velocity.y);
     }
 }
