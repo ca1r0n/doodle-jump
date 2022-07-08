@@ -16,6 +16,7 @@ public class move : MonoBehaviour
     public LayerMask Rect;
     public float moveSpead = 40;
     private float Rad = 0.4f;
+    public bool CheckTrigger;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,17 +24,24 @@ public class move : MonoBehaviour
     }
     private void Update()
     {
-        CheckingGround();
+        CharacterMove();
         if (onGround)
         {
-            //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             rb_Platforms.velocity = new Vector2(rb_Platforms.velocity.x, -jumpForce);
         }
-        CharacterMove();
+        CheckingGround();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        onGround = true;
     }
     void CheckingGround()
     {
-        onGround = Physics2D.OverlapCircle(GroundCheck.position, Rad, ground);
+        if (CheckTrigger)
+            onGround = false;
+        else
+            onGround = Physics2D.OverlapCircle(GroundCheck.position, Rad, ground);
     }
     private void CharacterMove()
     {
