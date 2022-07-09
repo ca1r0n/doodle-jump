@@ -6,8 +6,10 @@ public class move : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Rigidbody2D rb_Platforms;
+
+    private Transform tr;
+
     [SerializeField] private GameObject platforms;
-    [SerializeField] private Transform Hero;
     [SerializeField] private float jumpForce = 15;
     private bool onGround = false;
     [SerializeField] private Transform GroundCheck;
@@ -20,6 +22,7 @@ public class move : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb_Platforms = platforms.GetComponent<Rigidbody2D>();
+        tr = GetComponent<Transform>();
     }
     private void Update()
     {
@@ -45,5 +48,14 @@ public class move : MonoBehaviour
     private void CharacterMove()
     {
         rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpead, rb.velocity.y);
+        if ((Input.GetAxis("Horizontal") > 0))
+        {
+            transform.localScale = new Vector3(-1,1,1);
+        }
+        else if ((Input.GetAxis("Horizontal") < 0))
+        {
+            transform.localScale = new Vector3(1,1,1);
+        }
+
     }
 }
