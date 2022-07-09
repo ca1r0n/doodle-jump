@@ -15,7 +15,6 @@ public class Doodle : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            Debug.Log("instance is not empty");
         }
         
         this.DoodleRigid.velocity = Vector2.up * forceStartJump; 
