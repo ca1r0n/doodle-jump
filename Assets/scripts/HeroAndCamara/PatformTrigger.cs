@@ -28,7 +28,7 @@ public class PatformTrigger : MonoBehaviour
     }
     private void CheckPos(Transform man)
     {
-        if (man.transform.position.y < transform.position.y+0.055f) 
+        if (man.transform.position.y < transform.position.y+0.1f) 
         {
             GetComponent<Collider2D>().isTrigger = true;
         }

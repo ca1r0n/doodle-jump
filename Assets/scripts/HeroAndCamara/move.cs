@@ -24,6 +24,7 @@ public class move : MonoBehaviour
         rb_Platforms = platforms.GetComponent<Rigidbody2D>();
         tr = GetComponent<Transform>();
     }
+
     private void Update()
     {
         CharacterMove();
@@ -32,7 +33,16 @@ public class move : MonoBehaviour
             rb_Platforms.velocity = new Vector2(rb_Platforms.velocity.x, -jumpForce);
         }
         CheckingGround();
+        if (transform.position.x < -23.75f)
+        {
+            transform.position = new Vector3(23.7f, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x > 23.75f)
+        {
+            transform.position = new Vector3(-23.7f, transform.position.y, transform.position.z);
+        }
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

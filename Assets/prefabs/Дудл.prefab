@@ -100,9 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e527fab806a10b44491217867c49f0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platforms: {fileID: 0}
-  Hero: {fileID: 0}
-  jumpForce: 15
+  platforms: {fileID: 2599761115833770768, guid: 658c802dd4cabf247ac0b60f1aef736a, type: 3}
+  jumpForce: 20
   GroundCheck: {fileID: 8759204726352419060}
   ground:
     serializedVersion: 2
@@ -110,7 +109,7 @@ MonoBehaviour:
   Rect:
     serializedVersion: 2
     m_Bits: 128
-  moveSpead: 40
+  moveSpead: 20
   CheckTrigger: 0
 --- !u!70 &6471738659151776785
 CapsuleCollider2D:
@@ -191,7 +190,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
