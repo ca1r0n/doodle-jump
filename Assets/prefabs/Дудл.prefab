@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4646001690497384432}
   m_Layer: 0
   m_Name: "\u0414\u0443\u0434\u043B"
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e527fab806a10b44491217867c49f0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platforms: {fileID: 2599761115833770768, guid: 658c802dd4cabf247ac0b60f1aef736a, type: 3}
   jumpForce: 20
   GroundCheck: {fileID: 8759204726352419060}
   ground:

@@ -5,11 +5,11 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Rigidbody2D rb_Platforms;
+/*    private Rigidbody2D rb_Platforms;*/
 
     private Transform tr;
 
-    [SerializeField] private GameObject platforms;
+/*    [SerializeField] private GameObject platforms;*/
     [SerializeField] private float jumpForce = 15;
     private bool onGround = false;
     [SerializeField] private Transform GroundCheck;
@@ -21,17 +21,17 @@ public class move : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb_Platforms = platforms.GetComponent<Rigidbody2D>();
+/*        rb_Platforms = platforms.GetComponent<Rigidbody2D>();*/
         tr = GetComponent<Transform>();
     }
 
     private void Update()
     {
         CharacterMove();
-        if (onGround)
+/*        if (onGround)
         {
             rb_Platforms.velocity = new Vector2(rb_Platforms.velocity.x, -jumpForce);
-        }
+        }*/
         CheckingGround();
         if (transform.position.x < -23.75f)
         {
@@ -46,7 +46,8 @@ public class move : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        onGround = true;
+        if (collision.gameObject.tag == "platform")
+            onGround = true;
     }
     void CheckingGround()
     {
